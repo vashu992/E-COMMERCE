@@ -84,8 +84,8 @@ func BuyItemFromCart(ctx context.Context, userCollection *mongo.Collection, user
 	var getcartitems models.User
 	var ordercart models.Order
 
-	ordercart.Order_id= primitive.NewObjectID()
-	ordercart.Ordered_At = time.Now()
+	ordercart.Order_ID= primitive.NewObjectID()
+	ordercart.Orderered_At = time.Now()
 	ordercart.Order_Cart = make([]models.ProductUser, 0)
 	ordercart.Payment_Method.COD = true
 
@@ -149,8 +149,8 @@ func InstantBuyer(ctx context.Context, prodCollection, userColletion *mongo.Coll
 	var product_details models.ProductUser
 	var order_detail models.Order
 
-	order_detail.Order_id = primitive.NewObjectID()
-	order_detail.Ordered_At = time.Now()
+	order_detail.Order_ID = primitive.NewObjectID()
+	order_detail.Orderered_At = time.Now()
 	order_detail.Order_Cart = make([]models.ProductUser, 0)
 	order_detail.Payment_Method.COD = true
 	err = prodCollection.FindOne(ctx, bson.D{primitive.E{Key: "_id", Value: productID}}).Decode(&product_details)
